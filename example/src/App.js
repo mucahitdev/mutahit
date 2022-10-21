@@ -8,8 +8,7 @@ const App = () => {
   return (
     <div style={{ backgroundColor: color, height: '100vh' }}>
       <button onClick={setRandomColor}>Change Color</button>
-      <br />
-      <br />
+
       <input
         type="number"
         value={number}

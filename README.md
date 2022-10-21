@@ -7,22 +7,64 @@
 ## Install
 
 ```bash
-npm install --save mutahit
+npm i mutahit
+```
+
+## or
+
+```bash
+yarn add mutahit
 ```
 
 ## Usage
 
-```jsx
-import React, { Component } from 'react'
+```js
+import React, { useState } from 'react'
 
-import MyComponent from 'mutahit'
-import 'mutahit/dist/index.css'
+import { useRandomColor, useNumberWithCommas, useConvertPrice } from 'mutahit'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const App = () => {
+  const [color, setRandomColor] = useRandomColor()
+  const [number, setNumber] = useState(0)
+  return (
+    <div style={{ backgroundColor: color, height: '100vh' }}>
+      <button onClick={setRandomColor}>Change Color</button>
+
+      <input
+        type='number'
+        value={number}
+        onChange={(e) => setNumber(e.target.value)}
+      />
+      <p>{useNumberWithCommas(number)}</p>
+
+      <p>{useConvertPrice(number, 'tr')}</p>
+    </div>
+  )
 }
+
+export default App
+```
+
+## Hooks
+
+```js
+const [color, setRandomColor] = useRandomColor()
+color type: string (#000000)
+setRandomColor type: function (set random color)
+```
+
+```js
+useNumberWithCommas(number)
+number type: number required (100000)
+```
+
+```js
+useConvertPrice(number, lang)
+number type: number required (100000)
+lang type: string optional default: 'en'
+
+```
+
 ```
 
 ## License
